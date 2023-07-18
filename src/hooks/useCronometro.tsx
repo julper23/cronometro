@@ -28,7 +28,6 @@ export default function useCronometro() {
             setDiff(null)
             setInitial(null)
         }
-
     },[diff])
 
     useEffect(() => {
@@ -36,8 +35,6 @@ export default function useCronometro() {
             setDiff(null)
             setInitial(null)
         }
-
-
     },[stop])
 
     const startC = () => {
@@ -45,6 +42,7 @@ export default function useCronometro() {
         setStop(false)
         setInitial(+new Date())
     }
+
     const pauseC = () => {
         if(diff){
             if(pause){
@@ -54,6 +52,7 @@ export default function useCronometro() {
             setPause(!pause)
         }
     }
+
     const stopC = () => {
         if(diff){
             setStop(true)
@@ -63,7 +62,7 @@ export default function useCronometro() {
 
     const timeFormat = (tm:any) => {
         
-        if(!tm) return "00:00:00:00"
+        if(!tm) return "00:00:00.00"
         let hh = tm.getUTCHours()
         let mm = tm.getUTCMinutes()
         let ss = tm.getSeconds()
@@ -74,7 +73,7 @@ export default function useCronometro() {
         ss = ss < 10 ? "0"+ss : ss
         cm = cm < 10 ? "0"+cm : cm
       
-        return `${hh}:${mm}:${ss}:${cm}`
+        return `${hh}:${mm}:${ss}.${cm}`
     }
 
     return {startC,pauseC,stopC,timeFormat,pause,diff}
